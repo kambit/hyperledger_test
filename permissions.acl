@@ -1,0 +1,32 @@
+rule NetworkAdminUser {
+  description: "Grant full access to all USER resources"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation:ALL
+  resource:"**"
+  action:ALLOW
+}
+
+rule NetworkAdminSystem {
+  description: "Grant full access to all SYSTEM resources"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation:ALL
+  resource:"org.hyperledger.composer.system.*"
+  action:ALLOW
+}
+rule SimpleRule {
+    description: "Description of the ACL rule"
+    participant: "composers.participants.Doctor"
+    operation: ALL
+    resource: "org.hyperledger.composer.system.**"
+    action: ALLOW
+}
+
+// rule sendRecord {
+//   description: "Only"
+//   participant(m): "composers.participants.Doctor"
+//   operation:READ
+//   resource:"composers.healthrecords.Record"
+//   transaction(tx):"composers.healthrecords.sendRecord"
+//   condition: (tx.Doctor.getIdentifier()==m.getIdentifier())
+//   action:ALLOW
+// }
